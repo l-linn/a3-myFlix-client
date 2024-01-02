@@ -9,8 +9,16 @@ const MovieView = ({ movie, onBackClick }) => {
         <span>{movie.title}</span>
       </div>
       <div>
-        <span>Author: </span>
-        <span>{movie.author}</span>
+        <span>Director: </span>
+        <span>{movie.director}</span>
+      </div>
+      <div>
+        <span>Release Year: </span>
+        <span>{movie.releaseYear}</span>
+      </div>
+      <div>
+        <span>Description: </span>
+        <span>{movie.description}</span>
       </div>
       <button onClick={onBackClick}>Back</button>
     </div>
