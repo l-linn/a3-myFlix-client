@@ -7,24 +7,29 @@ export const MainView = () => {
     {
       id: 1,
       title: 'Pulp Fiction',
-      image: 'https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg',
+      image: 'https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1055_.jpg',
       director: 'Quentin Tarantino',
       releaseYear: 1994,
+      genre: 'Crime',
       description: 'Various interconnected stories of crime in Los Angeles.'
     },
     {
       id: 2,
-      title: "Mastering JavaScript Functional Programming",
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-      author: "Federico Kereki",
+      title: 'Avatar',
+      image: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UY2902_.jpg',
+      director: 'James Cameron',
+      releaseYear: 2009,
+      genre: 'Fantasy',
+      description: 'A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.'
     },
     {
       id: 3,
-      title: "JavaScript: The Good Parts",
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-      author: "Douglas Crockford",
+      title: 'The Shawshank Redemption',
+      image: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1200_.jpg',
+      director: 'Frank Darabont',
+      releaseYear: 1994,
+      genre: 'Drama',
+      description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.'
     },
   ]); //array destructure
 
