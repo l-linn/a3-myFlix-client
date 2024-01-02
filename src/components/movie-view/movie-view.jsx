@@ -1,8 +1,8 @@
 const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
+    <div className='setting'>
       <div>
-        <img src={movie.image} />
+        <img className ='img-size' src={movie.image} />
       </div>
       <div>
         <span>Title: </span>
