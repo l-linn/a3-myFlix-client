@@ -3,12 +3,14 @@
 }
 
 .img-size {
-  width: 400px;
+  width: 300px;
 }
 
 .setting {
-  text-align: center;
+  text-align: left;
+  width: 300px;
   margin: auto;
+  padding: 50px;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
