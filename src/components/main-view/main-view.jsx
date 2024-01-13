@@ -10,7 +10,7 @@ export const MainView = () => {
     fetch("https://openlibrary.org/search.json?q=star+wars")
     .then((response) => response.json())
     .then((data) => {
-      console.log("books from api:", data);
+      console.log("movies from api:", data);
     });
   }, []);
 
