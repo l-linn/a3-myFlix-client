@@ -16,9 +16,10 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    author: PropTypes.string,
-  }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
-};
-
+    director: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+    genre: PropTypes.string.isRequired,
+    description:PropTypes.string.isRequired
+  })
+}
 export { MovieCard };
