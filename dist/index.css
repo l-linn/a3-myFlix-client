@@ -1,7 +1,5 @@
-$color: steelblue;
-
 .my-flix {
-  color: $color;
+  color: #4682b4;
 }
 
 .img-size {
@@ -9,8 +7,10 @@ $color: steelblue;
 }
 
 .setting {
-  margin: auto;
-  padding: 50px;
   text-align: left;
   width: 300px;
+  margin: auto;
+  padding: 50px;
 }
+
+/*# sourceMappingURL=index.css.map */

@@ -7,10 +7,24 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=star+wars")
+    fetch("https://movies-flix-lin-66267be64a83.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
       console.log("movies from api:", data);
+
+      const moviesFromApi = data.map((movie) => {
+        return {
+          id: movie._id,
+          title: movie.title,
+          image: movie.image,
+          director: movie.director.name,
+          releaseYear: movie.releaseYear,
+          genre: movie.genre.type,
+          description: movie.description
+        };
+      });
+      setMovies(moviesFromApi);
+
     });
   }, []);
 
