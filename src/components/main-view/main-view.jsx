@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from '../login-view/login-view';
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]); //array destructure
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("https://movies-flix-lin-66267be64a83.herokuapp.com/movies")
+    fetch('https://movies-flix-lin-66267be64a83.herokuapp.com/movies')
     .then((response) => response.json())
     .then((data) => {
       console.log("movies from api:", data);
@@ -27,6 +29,10 @@ export const MainView = () => {
 
     });
   }, []);
+
+  if (!user) {
+    return <LoginView />;
+  }
 
   if (selectedMovie) {
     return (
