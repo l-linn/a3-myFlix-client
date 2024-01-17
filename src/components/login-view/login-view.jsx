@@ -14,6 +14,8 @@ const LoginView = ({ onLoggedIn }) => {
       password,
     };
 
+    console.log(data);
+
     fetch('https://movies-flix-lin-66267be64a83.herokuapp.com/login', {
       method: 'POST',
       headers: {
