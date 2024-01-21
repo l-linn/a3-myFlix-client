@@ -1,16 +1,14 @@
-$color: steelblue;
 
-.my-flix {
-  color: $color;
-}
+@import '~bootstrap/scss/bootstrap.scss';
 
 .img-size {
-  width: 300px;
+  width: 100%;
 }
 
+/*
 .setting {
   margin: auto;
   padding: 50px;
   text-align: left;
-  width: 300px;
-}
+  width: 500px;
+}*/ 

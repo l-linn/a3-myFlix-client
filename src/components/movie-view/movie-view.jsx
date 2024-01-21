@@ -1,31 +1,22 @@
+import { Button, Card } from "react-bootstrap";
+
 const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div className='setting'>
-      <div>
-        <img className ='img-size' src={movie.image} />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.title}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.director}</span>
-      </div>
-      <div>
-        <span>Release Year: </span>
-        <span>{movie.releaseYear}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movie.genre}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.description}</span>
-      </div>
-      <button onClick={onBackClick}>Back</button>
-    </div>
+    <Card>
+      <Card.Img variant='top' src={movie.image} />
+      <Card.Body>
+        <Card.Title>{movie.title}</Card.Title>
+
+        <Card.Text>
+          Director: {movie.director}<br/>
+          Release Year: {movie.releaseYear}<br/>
+          Genre: {movie.genre}<br/>
+          Description: {movie.description}
+        </Card.Text>
+
+        <Button onClick={onBackClick} variant="dark">Back</Button>
+      </Card.Body>
+    </Card>
   );
 };
 
