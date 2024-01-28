@@ -4,6 +4,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
+import { ProfileView } from '../profile-view/profile-view.jsx';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,6 +19,7 @@ export const MainView = () => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
 
+    //connect app to API with hook
     useEffect(() => {
         if (!token) return;
 
@@ -30,7 +32,7 @@ export const MainView = () => {
 
                 const moviesFromApi = data.map((movie) => {
                     return {
-                        id: movie._id,
+                        _id: movie._id,
                         title: movie.title,
                         image: movie.image,
                         director: movie.director.name,
@@ -42,6 +44,36 @@ export const MainView = () => {
                 setMovies(moviesFromApi);
             });
     }, [token]);
+
+    // Add Favorite Movie
+    const addFav = (id) => {
+        fetch(
+            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/favorits/${id}`,
+            {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    alert('Failed to add');
+                }
+            })
+            .then((user) => {
+                if (user) {
+                    localStorage.setItem('user', JSON.stringify(user));
+                    setUser(user);
+                    //setIsFavorite(true);
+                }
+            })
+            .catch((error) => {
+                console.error('Error: ', error);
+            });
+    };
 
     return (
         <BrowserRouter>
@@ -102,9 +134,7 @@ export const MainView = () => {
                                     <Col md={8}>
                                         <MovieView
                                             movies={movies}
-                                            // onBackClick={() =>
-                                            //     setSelectedMovie(null)
-                                            // }
+                                            addFav={addFav}
                                         />
                                     </Col>
                                 )}
@@ -131,6 +161,7 @@ export const MainView = () => {
                                                 <MovieCard
                                                     //key={movie.id}
                                                     movie={movie}
+
                                                     // onMovieClick={(
                                                     //     newSelectedMovie
                                                     // ) => {
@@ -142,6 +173,27 @@ export const MainView = () => {
                                             </Col>
                                         ))}
                                     </>
+                                )}
+                            </>
+                        }
+                    />
+
+                    <Route
+                        path='/profile'
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to='/login' replace />
+                                ) : (
+                                    <Col>
+                                        <ProfileView
+                                            user={user}
+                                            movies={movies}
+                                            //removeFav={removeFav}
+                                            addFav={addFav}
+                                            setUser={setUser}
+                                        />
+                                    </Col>
                                 )}
                             </>
                         }
