@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Container, Button, Card, Form } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
+import moment from 'moment';
 
 export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
     const [username, setUsername] = useState(user.username);
@@ -13,7 +14,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
 
     // Return list of favorite Movies
     const favoriteMovieList = movies.filter((m) =>
-        user.FavoriteMovies.includes(m._id)
+        user.favorites.includes(m._id)
     );
 
     // Token
@@ -23,9 +24,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
     const handleUpdate = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
         event.preventDefault();
-
         const user = JSON.parse(localStorage.getItem('user'));
-
         const data = {
             username: username,
             email: email,
@@ -88,12 +87,6 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
-                            <PersonSquare
-                                variant='top'
-                                color='orange'
-                                className='my-4'
-                                size={180}
-                            />
                             <Card.Text>Username:{user.username}</Card.Text>
                             <Card.Text>Email: {user.email}</Card.Text>
                             <Card.Text>
@@ -155,7 +148,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                 <h2 className='mt-5 text-center text-md-start'>
                     Favorite Movies
                 </h2>
-                {/* <Row className='justify-content-center'>
+                <Row className='justify-content-center'>
                     {favoriteMovieList?.length !== 0 ? (
                         favoriteMovieList?.map((movie) => (
                             <Col
@@ -163,14 +156,14 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                                 md={5}
                                 lg={3}
                                 xl={2}
-                                className='mx-2 mt-2 mb-5 col-6 similar-movies-img'
+                                className='mx-2 mt-2 mb-5 col-6'
                                 key={movie._id}
                             >
                                 <MovieCard
                                     movie={movie}
                                     removeFav={removeFav}
                                     addFav={addFav}
-                                    isFavorite={user.FavoriteMovies.includes(
+                                    isFavorite={user.favorites.includes(
                                         movie._id
                                     )}
                                 />
@@ -178,10 +171,10 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                         ))
                     ) : (
                         <Col>
-                            <p>There are no favorites Movies</p>
+                            <p>There are no favorite movies</p>
                         </Col>
                     )}
-                </Row> */}
+                </Row>
             </Row>
         </Container>
     );
