@@ -48,7 +48,7 @@ export const MainView = () => {
     // Add Favorite Movie
     const addFav = (id) => {
         fetch(
-            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/favorits/${id}`,
+            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/favorites/${id}`,
             {
                 method: 'POST',
                 headers: {
@@ -68,6 +68,36 @@ export const MainView = () => {
                     localStorage.setItem('user', JSON.stringify(user));
                     setUser(user);
                     //setIsFavorite(true);
+                }
+            })
+            .catch((error) => {
+                console.error('Error: ', error);
+            });
+    };
+
+    // Remove Favorite Movie
+    const removeFav = (id) => {
+        fetch(
+            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/favorites/${id}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    alert('Failed to remove');
+                }
+            })
+            .then((user) => {
+                if (user) {
+                    localStorage.setItem('user', JSON.stringify(user));
+                    setUser(user);
+                    //setIsFavorite(false);
                 }
             })
             .catch((error) => {
@@ -135,6 +165,7 @@ export const MainView = () => {
                                         <MovieView
                                             movies={movies}
                                             addFav={addFav}
+                                            removeFav={removeFav}
                                         />
                                     </Col>
                                 )}
@@ -159,16 +190,12 @@ export const MainView = () => {
                                                 md={3}
                                             >
                                                 <MovieCard
-                                                    //key={movie.id}
                                                     movie={movie}
-
-                                                    // onMovieClick={(
-                                                    //     newSelectedMovie
-                                                    // ) => {
-                                                    //     setSelectedMovie(
-                                                    //         newSelectedMovie
-                                                    //     );
-                                                    // }}
+                                                    removeFav={removeFav}
+                                                    addFav={addFav}
+                                                    isFavorite={user.favorites.includes(
+                                                        movie._id
+                                                    )}
                                                 />
                                             </Col>
                                         ))}
@@ -189,7 +216,7 @@ export const MainView = () => {
                                         <ProfileView
                                             user={user}
                                             movies={movies}
-                                            //removeFav={removeFav}
+                                            removeFav={removeFav}
                                             addFav={addFav}
                                             setUser={setUser}
                                         />
