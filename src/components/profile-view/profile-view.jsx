@@ -13,9 +13,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
     const navigate = useNavigate();
 
     // Return list of favorite Movies
-    const favoriteMovieList = movies.filter((m) =>
-        user.favorites.includes(m._id)
-    );
+    const favoriteMovies = movies.filter((m) => user.favorites.includes(m._id));
 
     // Token
     const token = localStorage.getItem('token');
@@ -32,7 +30,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
         };
 
         fetch(
-            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}`,
+            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/profile`,
             {
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -61,7 +59,7 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
     // Delete User
     const handleDelete = () => {
         fetch(
-            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}`,
+            `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/setting`,
             {
                 method: 'DELETE',
                 headers: {
@@ -149,8 +147,8 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                     Favorite Movies
                 </h2>
                 <Row className='justify-content-center'>
-                    {favoriteMovieList?.length !== 0 ? (
-                        favoriteMovieList?.map((movie) => (
+                    {favoriteMovies?.length !== 0 ? (
+                        favoriteMovies?.map((movie) => (
                             <Col
                                 sm={7}
                                 md={5}
