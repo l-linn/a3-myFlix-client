@@ -9,11 +9,11 @@ import Container from 'react-bootstrap/Container';
 // Main component (will eventually use all the others)
 
 const MyFlixApp = () => {
-  return (
-  <Container>
-    <MainView />
-  </Container>
-  );
+    return (
+        <Container>
+            <MainView />
+        </Container>
+    );
 };
 
 // Finds the root of your app
