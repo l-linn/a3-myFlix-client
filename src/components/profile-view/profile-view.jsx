@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Col, Row, Container, Button, Card, Form } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
-import moment from 'moment';
 
 export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
     const [username, setUsername] = useState(user.username);
@@ -85,14 +84,9 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
-                            <Card.Text>Username:{user.username}</Card.Text>
+                            <Card.Text>Username: {user.username}</Card.Text>
                             <Card.Text>Email: {user.email}</Card.Text>
-                            <Card.Text>
-                                Birthday:{' '}
-                                {moment(user.birthday)
-                                    .utc()
-                                    .format('YYYY-MM-DD')}
-                            </Card.Text>
+                            <Card.Text>Birthday: {user.birthday}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
