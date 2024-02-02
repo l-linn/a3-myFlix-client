@@ -124,12 +124,14 @@ export const ProfileView = ({ user, movies, setUser, removeFav, addFav }) => {
                             type='submit'
                             onClick={handleUpdate}
                             className='mt-3 me-2'
+                            variant='dark'
                         >
                             Update
                         </Button>
                         <Button
                             onClick={handleDelete}
-                            className='mt-3 bg-danger border-danger text-white'
+                            className='mt-3'
+                            variant='danger'
                         >
                             Delete User
                         </Button>

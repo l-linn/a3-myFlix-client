@@ -47,6 +47,7 @@ export const MainView = () => {
 
     // Add Favorite Movie
     const addFav = (id) => {
+        console.log(id);
         fetch(
             `https://movies-flix-lin-66267be64a83.herokuapp.com/users/${user.username}/favorites/${id}`,
             {
@@ -186,7 +187,7 @@ export const MainView = () => {
                                         {movies.map((movie) => (
                                             <Col
                                                 className='mb-4'
-                                                key={movie.id}
+                                                key={movie._id}
                                                 md={3}
                                             >
                                                 <MovieCard

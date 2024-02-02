@@ -2,15 +2,11 @@ import { Button, Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
-export const MovieView = ({ movies }) => {
-    const { movieID } = useParams();
-    console.log(movieID);
-    const movie = movies.find((m) => {
-        m._id === movieID;
-        console.log(m);
-    });
+export const MovieView = ({ movies, addFav }) => {
     console.log(movies);
-    console.log(movie);
+    const { movieId } = useParams();
+    console.log(movieId);
+    const movie = movies.find((m) => m._id === movieId);
 
     return (
         <Card>
@@ -26,7 +22,9 @@ export const MovieView = ({ movies }) => {
                     Genre: {movie?.genre}
                     <br />
                     Description: {movie?.description}
+                    <br />
                 </Card.Text>
+
                 <Link to={`/`}>
                     <Button variant='dark'>Back</Button>
                 </Link>
