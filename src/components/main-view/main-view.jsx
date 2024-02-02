@@ -226,89 +226,8 @@ export const MainView = () => {
                             </>
                         }
                     />
-
-                    {/* {!user ? (
-                        <Col md={5}>
-                            Please log in your account
-                            <LoginView
-                                onLoggedIn={(user, token) => {
-                                    setUser(user);
-                                    setToken(token);
-                                }}
-                            />
-                            <br></br>
-                            or please sign up below
-                            <SignupView />
-                        </Col>
-                    ) : selectedMovie ? (
-                        <Col md={8}>
-                            {" "}
-                            <MovieView
-                                movie={selectedMovie}
-                                onBackClick={() => setSelectedMovie(null)}
-                            />{" "}
-                        </Col>
-                    ) : movies.length === 0 ? (
-                        <div>The list is empty!</div>
-                    ) : (
-                        <>
-                            {movies.map((movie) => (
-                                <Col className='mb-5' key={movie.id} md={3}>
-                                    <MovieCard
-                                        //key={movie.id}
-                                        movie={movie}
-                                        onMovieClick={(newSelectedMovie) => {
-                                            setSelectedMovie(newSelectedMovie);
-                                        }}
-                                    />
-                                </Col>
-                            ))}
-                        </>
-                    )} */}
                 </Routes>
             </Row>
         </BrowserRouter>
     );
-
-    //original code below
-    // if (!user) {
-    //   return (
-    //     <>
-    //       <LoginView
-    //       onLoggedIn={(user, token) => {
-    //         setUser(user);
-    //         setToken(token);
-    //       }} />
-    //       or please sign up below
-    //       <SignupView />
-    //     </>
-    //   );
-    // }
-
-    // if (selectedMovie) {
-    //   return (
-    //     <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    //   );
-    // }
-
-    // if (movies.length === 0) {
-    //   return <div>The list is empty.</div>;
-    // }
-
-    // return (
-    //   <div>
-    //     {movies.map((movie) => {
-    //       return (
-    //         <MovieCard
-    //           key={movie.id}
-    //           movie={movie}
-    //           onMovieClick={(newSelectedMovie) => {
-    //             setSelectedMovie(newSelectedMovie);
-    //           }}
-    //         />
-    //       );
-    //     })}
-    //     <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-    //   </div>
-    // );
 };

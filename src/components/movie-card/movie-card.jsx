@@ -3,27 +3,27 @@ import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BookmarkHeart, BookmarkHeartFill } from 'react-bootstrap-icons';
 
-const MovieCard = ({ movie, isFavorite }) => {
+const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
-        <Card className='h-100'>
+        <Card className='h-100 mt-5 card-shadow'>
             <Card.Img variant='top' src={movie.image} />
-            {/* <div>
+            <div>
                 {isFavorite ? (
                     <BookmarkHeartFill
-                        size={40}
-                        color='orange'
+                        size={30}
+                        color='red'
                         className='mt-2 me-2 top-0 end-0'
                         onClick={() => removeFav(movie._id)}
                     />
                 ) : (
                     <BookmarkHeart
-                        size={40}
-                        color='orange'
+                        size={30}
+                        color='red'
                         className='mt-2 me-2 top-0 end-0'
                         onClick={() => addFav(movie._id)}
                     />
                 )}
-            </div> */}
+            </div>
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director}</Card.Text>

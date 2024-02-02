@@ -2,7 +2,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
-export const MovieView = ({ movies, addFav }) => {
+export const MovieView = ({ movies }) => {
     console.log(movies);
     const { movieId } = useParams();
     console.log(movieId);
