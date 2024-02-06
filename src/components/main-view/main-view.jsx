@@ -6,9 +6,7 @@ import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view.jsx';
 import { BookmarkHeart, BookmarkHeartFill } from 'react-bootstrap-icons';
-
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -19,6 +17,8 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]); //array destructure
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
+    const [search, setSearch] = useState('');
+    const [selectedGenre, setSelectedGenre] = useState('');
 
     //connect app to API with hook
     useEffect(() => {
@@ -185,7 +185,83 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movie) => (
+                                        <Form className='form-inline mt-2 mb-2 d-flex justify-content-center'>
+                                            <Form.Control
+                                                className='ms-5 mx-md-0'
+                                                type='search'
+                                                id='searchForm'
+                                                onChange={(e) =>
+                                                    setSearch(e.target.value)
+                                                }
+                                                placeholder='Search for ...'
+                                            />
+                                            <Form.Select
+                                                className='ms-1 ms-md-3 w-25'
+                                                onChange={(e) =>
+                                                    setSelectedGenre(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            >
+                                                <option value='' selected>
+                                                    Search by genre
+                                                </option>
+                                                <option value='Drama'>
+                                                    Drama
+                                                </option>
+                                                <option value='Crime'>
+                                                    Crime
+                                                </option>
+                                                <option value='Sci-Fi'>
+                                                    Sci-Fi
+                                                </option>
+                                                <option value='Fantasy'>
+                                                    Fantasy
+                                                </option>
+                                                <option value='Thriller'>
+                                                    Thriller
+                                                </option>
+                                                <option value='Adventure'>
+                                                    Adventure
+                                                </option>
+                                            </Form.Select>
+                                        </Form>
+
+                                        {movies
+                                            .filter((movie) => {
+                                                return selectedGenre === ''
+                                                    ? movie
+                                                    : movie.genre ===
+                                                          selectedGenre;
+                                            })
+                                            .filter((movie) => {
+                                                return search === ''
+                                                    ? movie
+                                                    : movie.title
+                                                          .toLowerCase()
+                                                          .includes(
+                                                              search.toLowerCase()
+                                                          );
+                                            })
+                                            .map((movie, movieId) => (
+                                                <Col
+                                                    md={6}
+                                                    lg={4}
+                                                    xl={3}
+                                                    className='mb-5 col-8'
+                                                    key={movieId}
+                                                >
+                                                    <MovieCard
+                                                        movie={movie}
+                                                        removeFav={removeFav}
+                                                        addFav={addFav}
+                                                        isFavorite={user.favorites.includes(
+                                                            movie._id
+                                                        )}
+                                                    />
+                                                </Col>
+                                            ))}
+                                        {/* {movies.map((movie) => (
                                             <Col
                                                 className='mb-4'
                                                 key={movie._id}
@@ -200,7 +276,7 @@ export const MainView = () => {
                                                     )}
                                                 />
                                             </Col>
-                                        ))}
+                                        ))} */}
                                     </>
                                 )}
                             </>
