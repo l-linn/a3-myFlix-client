@@ -2,10 +2,12 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BookmarkHeart, BookmarkHeartFill } from 'react-bootstrap-icons';
+import { MovieView } from '../movie-view/movie-view';
+import Container from 'react-bootstrap/Container';
 
 const MovieCard = ({ movie, addFav, removeFav, isFavorite }) => {
     return (
-        <Card className='h-100 mt-5 card-shadow'>
+        <Card className='h-100 card-shadow'>
             <Card.Img variant='top' src={movie.image} />
             <div>
                 {isFavorite ? (

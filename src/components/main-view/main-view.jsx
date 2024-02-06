@@ -5,6 +5,7 @@ import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view.jsx';
+import { BookmarkHeart, BookmarkHeartFill } from 'react-bootstrap-icons';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
