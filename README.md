@@ -6,6 +6,10 @@
 
 Using React, build the client-side for an app called myFlix based on its existing server-side code (REST API and database).
 
+## API used
+
+https://github.com/l-linn/a2-movie-api.git
+
 ## App Views & Features
 
 -   Main view
@@ -43,10 +47,6 @@ Using React, build the client-side for an app called myFlix based on its existin
 -   Parcel/Transformer-Sass (v.2.11.0)
 -   Parcel (v.2.111.0)
 -   Process
-
-## API used
-
-https://github.com/l-linn/a2-movie-api.git
 
 ## To Set up this App
 
